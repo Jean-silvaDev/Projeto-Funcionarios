@@ -1,0 +1,86 @@
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    text-align: center; 
+    background-color: aliceblue;
+    color: darkgreen;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 30px;
+    color: #004d00;
+}
+
+#criaProduto {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+input {
+    width: 240px;
+    height: 24px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 100, 0, 0.1);
+}
+
+input:focus {
+    border-color: #006400;
+    box-shadow: 0 0 8px rgba(0, 100, 0, 0.3);
+}
+
+button { 
+    width: 200px;
+    height: 44px;
+    background-color: #007000;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 0 16px;
+    box-shadow: 0 4px 6px rgba(0, 100, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover { 
+    background-color: darkgreen;
+    cursor: pointer;
+    transform: translateY(-2px) scale(1.03);
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 100, 0, 0.2);
+}
+
+thead th {
+    background-color: #004d00;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+}
+
+tbody td {
+    background-color: #228B22;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+}
+
+tbody tr:hover {
+    background-color: #2e8b57;
+    transition: background-color 0.3s ease;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionários</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Gerenciamento de Funcionários</h1>
+
+    <form id="criaProduto">
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="number" id="salario" placeholder="Salário" step="0.01" min="0" required>
+        <button type="submit" id="botao">Adicionar Novo Funcionário</button>
+    </form>
+
+    <div id="listaProdutos">
+        <h2>Lista de Funcionários</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Salário</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaFuncionarios"></tbody>
+        </table>
+    </div>
+
+    <script src="dist/conexao.js"></script>
+</body>
+</html>
