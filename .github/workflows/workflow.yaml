@@ -10,6 +10,10 @@ jobs: # Definição dos jobs do workflow (Passo a passo da tarefa que será auto
   continuous-integration: # Nome do job
     runs-on: ubuntu-latest # Ambiente onde o job será executado (Sistema operacional)
 
+    defaults: # Configurações padrão para os passos do job
+      run:
+        working-directory: Backend # Diretório de trabalho para os comandos run
+
     steps: # Passos do job
     - uses: actions/checkout@v3 # Passo para fazer checkout do código (Realiza um clone do repositório)
 
