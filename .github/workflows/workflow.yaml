@@ -25,5 +25,8 @@ jobs: # Definição dos jobs do workflow (Passo a passo da tarefa que será auto
     - name: Install dependencies # Passo para instalar dependências do projeto
       run: npm install
 
+    - name: Corrigir permissão de execução do Jest # Passo para corrigir permissão de execução do Jest
+      run: chmod +x node_modules/.bin/jest # Comando para alterar permissões
+
     - name: Realizando os testes unitários # Passo para executar os testes unitários
       run: npm test
