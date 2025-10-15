@@ -1,0 +1,32 @@
+name: Backend Workflow # Nome do workflow
+
+on: # Quando e em que condições o workflow será executado
+  push: # Executar em push para a branch main
+    branches: [ main ]
+  pull_request: # Executar em pull request para a branch main
+    branches: [ main ]
+
+jobs: # Definição dos jobs do workflow (Passo a passo da tarefa que será automatizada)
+  backend-workflow: # Nome do job
+    runs-on: ubuntu-latest # Ambiente onde o job será executado (Sistema operacional)
+
+    defaults: # Configurações padrão para os passos do job
+      run:
+        working-directory: Backend # Diretório de trabalho para os comandos run
+
+    steps: # Passos do job
+    - uses: actions/checkout@v3 # Passo para fazer checkout do código (Realiza um clone do repositório)
+
+    - name: Configurando o Node.js # Passo para configurar o Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20.x # Versão do Node.js 
+
+    - name: Install dependencies # Passo para instalar dependências do projeto
+      run: npm install
+
+    - name: Corrigir permissão de execução do Jest # Passo para corrigir permissão de execução do Jest
+      run: chmod +x node_modules/.bin/jest # Comando para alterar permissões
+
+    - name: Realizando os testes unitários # Passo para executar os testes unitários
+      run: npm test

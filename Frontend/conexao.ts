@@ -89,4 +89,8 @@ async function editarFuncionario(cod: number): Promise<void> {
     }
 }
 
-listaFuncionarios();
+if (typeof window !== "undefined") {
+  listaFuncionarios();
+}
+
+export { listaFuncionarios, editarFuncionario, deletarFuncionario };

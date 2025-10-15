@@ -6,28 +6,34 @@ import mysql from "mysql2";
 jest.mock("mysql2", () => ({
   createConnection: jest.fn(() => ({
     connect: jest.fn((cb) => cb(null)),
-    query: jest.fn((sql: string, values: any, cb: any) => {
-      // Simulação dos comportamentos de cada rota
-      if (sql.includes("INSERT INTO funcionario")) {
+
+    query: jest.fn((...args: any[]) => {
+      const sql = args[0]?.toLowerCase();
+      const values = Array.isArray(args[1]) ? args[1] : [];
+      const cb = typeof args[1] === "function" ? args[1] : args[2];
+
+      if (!cb) return;
+
+      if (sql.includes("insert into funcionario")) {
         cb(null, { insertId: 101 });
       } 
-      else if (sql.toLowerCase().includes("select * from funcionario")) {
+      else if (sql.includes("select * from funcionario where cod")) {
         if (values[0] === "1") {
           cb(null, [{ cod: 1, nome: "Jean", salario: 3500 }]);
         } else {
           cb(null, []);
         }
       } 
-      else if (sql.startsWith("SELECT * FROM funcionario")) {
+      else if (sql.includes("select * from funcionario")) {
         cb(null, [
           { cod: 1, nome: "Jean", salario: 3500 },
           { cod: 2, nome: "Maria", salario: 4200 },
         ]);
       } 
-      else if (sql.startsWith("UPDATE funcionario")) {
+      else if (sql.includes("update funcionario")) {
         cb(null, { affectedRows: 1 });
       } 
-      else if (sql.startsWith("DELETE FROM funcionario")) {
+      else if (sql.includes("delete from funcionario")) {
         cb(null, { affectedRows: 1 });
       } 
       else {
@@ -49,7 +55,6 @@ describe("🚀 Testes da API de Funcionários", () => {
     expect(res.body.nome).toBe("João");
   });
 
-  /*
   // GET — Listar todos
   it("GET /funcionario deve listar todos os funcionários", async () => {
     const res = await request(app).get("/funcionario");
@@ -58,7 +63,7 @@ describe("🚀 Testes da API de Funcionários", () => {
     expect(Array.isArray(res.body)).toBe(true);
     expect(res.body.length).toBe(2);
   });
-  */
+
   // GET — Buscar por código existente
   it("GET /funcionario/:cod deve retornar um funcionário específico", async () => {
     const res = await request(app).get("/funcionario/1");
