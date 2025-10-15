@@ -7,7 +7,7 @@ on: # Quando e em que condições o workflow será executado
     branches: [ main ]
 
 jobs: # Definição dos jobs do workflow (Passo a passo da tarefa que será automatizada)
-  backend-workflow: # Nome do job
+  frontend-workflow: # Nome do job
     runs-on: ubuntu-latest # Ambiente onde o job será executado (Sistema operacional)
 
     defaults: # Configurações padrão para os passos do job
