@@ -77,12 +77,12 @@ describe("🚀 Testes da API de Funcionários", () => {
   // Criar....
 
   // DELETE — Remover
-  /*
+  
   it("DELETE /funcionario/:cod deve deletar um funcionário existente", async () => {
     const res = await request(app).delete("/funcionario/1");
 
     expect(res.status).toBe(200);
     expect(res.text).toContain("deletado");
   });
-  */
+
 });
