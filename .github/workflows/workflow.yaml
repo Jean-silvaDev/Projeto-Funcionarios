@@ -2,9 +2,9 @@ name: Workflow # Nome do workflow
 
 on: # Quando e em que condições o workflow será executado
   push: # Executar em push para a branch main
-    branches: [ main ]
+    branches: [ nova_branch ]
   pull_request: # Executar em pull request para a branch main
-    branches: [ main ]
+    branches: [ nova_branch ]
 
 jobs: # Definição dos jobs do workflow (Passo a passo da tarefa que será automatizada)
   frontend-workflow: # Nome do job
